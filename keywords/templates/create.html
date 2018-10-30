@@ -1,0 +1,28 @@
+{% extends 'bootstrap.html' %}
+
+{% load bootstrap4 %}
+
+{% block bootstrap4_content %}
+    <div class="container">
+        <h1>{% block title %}Create keyword{% endblock %}</h1>
+        {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
+        {% block content %}
+
+
+
+            <form action="{% url 'create' %}" method="post" class="form">
+                {% csrf_token %}
+                {% for field in form %}
+                    {% bootstrap_field field %}
+                {% endfor %}
+                {% buttons %}
+                <button type="submit" class="btn btn-primary">
+                  Add
+                </button>
+                {% endbuttons %}
+            </form>
+
+        {% endblock %}
+    </div>
+
+{% endblock %}
